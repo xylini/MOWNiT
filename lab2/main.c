@@ -36,16 +36,17 @@ double calc_time(clock_t start, clock_t stop){
 int main () {
     clock_t start_time;
     clock_t stop_time;
-    int size;
+    int size = (int) pow(10,6);
 
     // results[i][0] - algo, results[i][1] - size, results[i][2] - time
     int results[140][3];
 
     for(int i = 0; i < 7; i++){
 
+        size = size + 333333;
         /* Matrixes algo 0 */
         for(int j = 0; j < 10; j++){
-            size = (int) pow(4,i+3);
+
             double * array_A = create_matrix(1,size,0);
             double * array_B = create_matrix(size,1,0);
             double * array_C = create_matrix(1,1,1);
@@ -64,7 +65,7 @@ int main () {
             results[j + i*10][1] = size;
             results[j + i*10][2] = (int)(calc_time(start_time,stop_time));
 
-            //printf("%f\n", array_C[0]);
+            printf("%f\n", array_C[0]);
 
             free(array_A);
             free(array_B);
@@ -73,7 +74,7 @@ int main () {
 
         /* Vectors algo 1 */
         for(int j = 0; j < 10; j++){
-            size = (int) pow(4,i+3);
+
             double * array_A = create_matrix(1,size,0);
             double * array_B = create_matrix(size,1,0);
             double * array_C = create_matrix(1,1,1);
