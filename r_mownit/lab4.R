@@ -1,3 +1,4 @@
+library(ggplot2)
 results = read.csv("c_result.csv")
 results_avg = aggregate( time ~ algorithm:matrix_size, data=results, FUN=mean)
 results_avg$sd = aggregate( time ~ algorithm:matrix_size, data=results, FUN=sd)$time
@@ -25,7 +26,6 @@ c_better_line = data.frame(matrix_size = seq(600,1800, by=20))
 c_better_line$time = predict(c_better_multiplication_fit,c_better_line)
 c_better_line$algorithm = "c_better_multiplication"
 
-library(ggplot2)
 ggplot(results_avg, aes(x=matrix_size, y=time, colour=algorithm, group=algorithm)) +
   geom_errorbar(aes(ymin=time-sd, ymax=time+sd, group=algorithm), colour="black", width=0.25) +
   geom_point() +
